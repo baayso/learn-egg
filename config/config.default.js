@@ -21,6 +21,11 @@ module.exports = appInfo => {
         serverUrl: 'https://hacker-news.firebaseio.com/v0',
     };
 
+    config.random = {
+        integersUrl: 'https://www.random.org/integers',
+        sequencesUrl: 'https://www.random.org/sequences'
+    };
+
     // add middleware robot
     config.middleware = [
         'robot',
