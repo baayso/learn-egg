@@ -29,6 +29,21 @@ class NewsService extends Service {
         return newsList.map(res => res.data);
     }
 
+    async list2(page = 1) {
+        return page + 2;
+    }
+
+    async list3(page = 1) {
+        return page + 3;
+    }
+
+    async list4(page = 1) {
+        const v2 = await this.list2(page);
+        const v3 = await this.ctx.service.news.list3(page);
+
+        return [v2, v3];
+    }
+
 }
 
 module.exports = NewsService;
