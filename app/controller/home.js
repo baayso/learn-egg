@@ -1,4 +1,4 @@
-const Controller = require('egg').Controller;
+const Controller = require('../core/base_controller');
 const bcrypt = require('bcryptjs');
 
 class HomeController extends Controller {
@@ -29,7 +29,16 @@ class HomeController extends Controller {
     }
 
     async read() {
-        this.ctx.body = await this.ctx.service.home.read();
+
+        const rule = {
+            id: {type: 'id'},
+        };
+
+        this.ctx.validate(rule, this.ctx.query);
+
+        const id = this.ctx.query.id || 1;
+
+        this.ctx.body = await this.ctx.service.home.read(id);
     }
 
     async readAll() {
